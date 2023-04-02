@@ -2,3 +2,4 @@ packages.db
 eratostene.db
 __pycache__
 env
+config.py

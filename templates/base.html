@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vanilla OS Packages Search</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="This site provides you with information about all the packages available in the Vanilla OS repository.">
+        <link rel="stylesheet" href="/static/css/index.css">
+    </head>
+    <body fabr-loader style="visibility: hidden">
+        <div class="container">
+            <header>
+                <span class="logo">Vanilla OS Packages</span>
+                <ul>
+                    <li><a href="/">Search</a></li>
+                    <li><a href="https://repo.vanillaos.org">Repository</a></li>
+                </ul>
+            </header>
+        </div>
+
+        {% block content %}{% endblock %}
+        <script src="/static/js/fabr.min.js"></script>
+    </body>
+</html>

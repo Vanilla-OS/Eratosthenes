@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="search">
+            <p id="search">Search for packages</p>
+            {% include 'search_form.html' %}
+        </div>
+
+        <h3 id="results">Results</h3>
+        {% if not packages %}
+            <p>No packages found.</p>
+        {% else %}
+            <table fabr-table fabr-settings="search" class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Version</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for package in packages %}
+                        <tr>
+                            <td><a href="{{ url_for('package', name=package.name) }}">{{ package.name }}</a></td>
+                            <td>{{ package.version }}</td>
+                            <td>{{ package.description }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}
