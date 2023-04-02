@@ -1,4 +1,4 @@
-# Eratostene - an APT repository browser and indexer, designed for Vanilla OS.
+# Eratosthenes - an APT repository browser and indexer, designed for Vanilla OS.
 # Copyright (C) 2023 Vanilla OS <https://vanillaos.org>
 
 # This program is free software: you can redistribute it and/or modify

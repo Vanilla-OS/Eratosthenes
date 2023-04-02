@@ -1,6 +1,6 @@
 import os
 
-DB_PATH = 'eratostene.db'
+DB_PATH = 'eratosthenes.db'
 REPO_URL = 'https://your.repo/Packages'
 PORT = 5000
 DEBUG = True
