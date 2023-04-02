@@ -47,19 +47,48 @@ class AptIndexer:
 
             logger.info("Indexing package: %s", package[0].split(': ')[1])
 
-            name = package[0].split(': ')[1]
-            version = package[1].split(': ')[1]
-            description = package[2].split(': ')[1]
-            section = package[3].split(': ')[1]
-            homepage = package[4].split(': ')[1]
-            maintainer = package[5].split(': ')[1]
-            depends = package[6].split(': ')[1]
-            recommends = package[7].split(': ')[1]
-            suggests = package[8].split(': ')[1]
-            conflicts = package[9].split(': ')[1]
-            replaces = package[10].split(': ')[1]
-            provides = package[11].split(': ')[1]
-            filename = package[12].split(': ')[1]
+            name = None 
+            version = None 
+            description = None 
+            section = None 
+            homepage = None 
+            maintainer = None 
+            depends = None 
+            recommends = None 
+            suggests = None 
+            conflicts = None 
+            replaces = None 
+            provides = None 
+            filename = None
+
+            for line in package:
+                if line.startswith('Package: '):
+                    name = line.split(': ')[1]
+                elif line.startswith('Version: '):
+                    version = line.split(': ')[1]
+                elif line.startswith('Description: '):
+                    description = line.split(': ')[1]
+                elif line.startswith('Section: '):
+                    section = line.split(': ')[1]
+                elif line.startswith('Homepage: '):
+                    homepage = line.split(': ')[1]
+                elif line.startswith('Maintainer: '):
+                    maintainer = line.split(': ')[1]
+                elif line.startswith('Depends: '):
+                    depends = line.split(': ')[1]
+                elif line.startswith('Recommends: '):
+                    recommends = line.split(': ')[1]
+                elif line.startswith('Suggests: '):
+                    suggests = line.split(': ')[1]
+                elif line.startswith('Conflicts: '):
+                    conflicts = line.split(': ')[1]
+                elif line.startswith('Replaces: '):
+                    replaces = line.split(': ')[1]
+                elif line.startswith('Provides: '):
+                    provides = line.split(': ')[1]
+                elif line.startswith('Filename: '):
+                    filename = line.split(': ')[1]
+
             values.append((
                 name, 
                 version, 

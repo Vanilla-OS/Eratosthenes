@@ -45,12 +45,26 @@ def search():
 def package(name):
     db = DbSession()
     package = db.session.query(Package).filter_by(name=name).first()
-    depends = db.session.query(Package).filter(Package.depends.like('%' + name + '%')).all()
-    recommends = db.session.query(Package).filter(Package.recommends.like('%' + name + '%')).all()
-    suggests = db.session.query(Package).filter(Package.suggests.like('%' + name + '%')).all()
-    conflicts = db.session.query(Package).filter(Package.conflicts.like('%' + name + '%')).all()
-    replaces = db.session.query(Package).filter(Package.replaces.like('%' + name + '%')).all()
-    provides = db.session.query(Package).filter(Package.provides.like('%' + name + '%')).all()
+    depends = []
+    recommends = []
+    suggests = []
+    conflicts = []
+    replaces = []
+    provides = []
+
+    if package.depends:
+        depends = [db.session.query(Package).filter(Package.name.like(dep.split(' ')[0])).first() for dep in package.depends.split(', ')]
+    if package.recommends:
+        recommends = [db.session.query(Package).filter(Package.name.like(dep.split(' ')[0])).first() for dep in package.recommends.split(', ')]
+    if package.suggests:
+        suggests = [db.session.query(Package).filter(Package.name.like(dep.split(' ')[0])).first() for dep in package.suggests.split(', ')]
+    if package.conflicts:
+        conflicts = [db.session.query(Package).filter(Package.name.like(dep.split(' ')[0])).first() for dep in package.conflicts.split(', ')]
+    if package.replaces:
+        replaces = [db.session.query(Package).filter(Package.name.like(dep.split(' ')[0])).first() for dep in package.replaces.split(', ')]
+    if package.provides:
+        provides = [db.session.query(Package).filter(Package.name.like(dep.split(' ')[0])).first() for dep in package.provides.split(', ')]
+
     db.session.close()
     return render_template(
         'package.html', 
