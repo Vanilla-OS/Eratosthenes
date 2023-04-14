@@ -184,3 +184,61 @@ header ul li a:hover {
 small {
     color: #686761;
 }
+
+.panels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 10px 0;
+}
+
+.panels .panel {
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.panel h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 23px;
+}
+
+code.hljs {
+    border-radius: 6px;
+}
+
+pre {
+    background-color: #282936;
+    padding: 20px;
+    color: #e9e9f4;
+    font-size: 18px;
+    font-family: monospace;
+    border-radius: 6px;
+}
+
+b,
+strong {
+    font-weight: 600;
+}
+
+.boxed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.boxed-list-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.boxed-list-wrapper {
+    background-color: #f2f1ed;
+    border-radius: 6px;
+    padding: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
