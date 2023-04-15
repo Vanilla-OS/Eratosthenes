@@ -1,5 +1,10 @@
-# Eratosthenes
-Eratosthenes is an APT repository browser and indexer, designed for Vanilla OS.
+<div align="center">
+<img src="assets/dark.png?raw=true#gh-dark-mode-only" height="40">
+<img src="assets/light.png?raw=true#gh-light-mode-only" height="40">
+</div>
+
+---
+<p align="center">Eratosthenes is an APT repository browser and indexer, designed for Vanilla OS.</p>
 
 ## Requirements
 You can install all the requirements with `pip install -r requirements.txt`.
