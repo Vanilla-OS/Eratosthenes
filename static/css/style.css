@@ -54,6 +54,10 @@ header {
     align-items: center;
 }
 
+header a {
+    text-decoration: none;
+}
+
 header ul {
     display: flex;
     gap: 20px;
