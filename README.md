@@ -19,10 +19,10 @@ DEBUG = True
 ```
 
 ## Usage
-To run the indexer, simply run `python eratosthenes.py index`. This will create 
+To run the indexer, simply run `python eratosthenes.py index`. This will create
 the database and index the repository.
 
-To run the web server, run `python eratosthenes.py serve`. This will start a web 
+To run the web server, run `python eratosthenes.py serve`. This will start a web
 server on port `5000` by default, but you can change it in the configuration
 file as explained above.
 

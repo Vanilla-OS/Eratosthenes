@@ -13,9 +13,12 @@
 
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
+import logging
 
-from conn import Model, DbSession
+from sqlalchemy import Column, Integer, String, exc
+
+from conn import Model
+
 
 class BaseMixin(object):
     @classmethod
@@ -32,8 +35,9 @@ class BaseMixin(object):
             logging.error("IntegrityError for data: %s" % type(obj).__name__)
             return False
 
+
 class Package(Model, BaseMixin):
-    __tablename__ = 'packages'
+    __tablename__ = "packages"
 
     id = Column(Integer, primary_key=True)
     name = Column(String(80), unique=True, nullable=False)
@@ -51,4 +55,4 @@ class Package(Model, BaseMixin):
     filename = Column(String(512), unique=False, nullable=False)
 
     def __repr__(self):
-        return '<Package %r>' % self.name
+        return "<Package %r>" % self.name
