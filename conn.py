@@ -15,17 +15,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.exc import OperationalError
+from sqlalchemy.orm import sessionmaker
 
 from config import DB_PATH
 
-
 Model = declarative_base()
+
 
 class DbSession:
     def __init__(self):
-        self.engine = create_engine('sqlite:///' + DB_PATH, echo=False)
+        self.engine = create_engine("sqlite:///" + DB_PATH, echo=False)
         self.Session = sessionmaker(bind=self.engine)
         self.session = self.Session()
