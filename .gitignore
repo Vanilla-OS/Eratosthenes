@@ -3,3 +3,4 @@ eratosthenes.db
 __pycache__
 env
 config.py
+poetry.lock
