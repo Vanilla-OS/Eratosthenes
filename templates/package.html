@@ -56,7 +56,7 @@
             </tr>
         </table>
 
-        <table fabr-table fabr-settings="search" class="table">
+        <table fabr-table fabr-settings="search|sort" class="table">
             <th><a name="depends">Depends</a></th>
             {% for depend in depends %}
                 <tr>
@@ -65,7 +65,7 @@
             {% endfor %}
         </table>
 
-        <table fabr-table fabr-settings="search" class="table">
+        <table fabr-table fabr-settings="search|sort" class="table">
             <th><a name="recommends">Recommends</a></th>
             {% for recommend in recommends %}
                 <tr>
@@ -74,7 +74,7 @@
             {% endfor %}
         </table>
 
-        <table fabr-table fabr-settings="search" class="table">
+        <table fabr-table fabr-settings="search|sort" class="table">
             <th><a name="suggests">Suggests</a></th>
             {% for suggest in suggests %}
                 <tr>
@@ -83,7 +83,7 @@
             {% endfor %}
         </table>
 
-        <table fabr-table fabr-settings="search" class="table">
+        <table fabr-table fabr-settings="search|sort" class="table">
             <th><a name="conflicts">Conflicts</a></th>
             {% for conflict in conflicts %}
                 <tr>
@@ -92,7 +92,7 @@
             {% endfor %}
         </table>
 
-        <table fabr-table fabr-settings="search" class="table">
+        <table fabr-table fabr-settings="search|sort" class="table">
             <th><a name="replaces">Replaces</a></th>
             {% for replace in replaces %}
                 <tr>
@@ -101,7 +101,7 @@
             {% endfor %}
         </table>
 
-        <table fabr-table fabr-settings="search" class="table">
+        <table fabr-table fabr-settings="search|sort" class="table">
             <th><a name="provides">Provides</a></th>
             {% for provide in provides %}
                 <tr>
