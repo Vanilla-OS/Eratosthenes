@@ -43,13 +43,13 @@ def search():
     query = request.args.get("q")
     db = DbSession()
     packages = (
-        db.session.query(Package).filter(
-            Package.name.like("%" + query + "%")).all()
+        db.session.query(Package).filter(Package.name.like("%" + query + "%")).all()
     )
     db.session.close()
     return render_template("search.html", packages=packages)
 
 
+@app.route("/api/pkg/<name>")
 @app.route("/package/<name>")
 def package(name):
     db = DbSession()
@@ -60,6 +60,11 @@ def package(name):
     conflicts = []
     replaces = []
     provides = []
+
+    if not package:
+        if "/api/" in request.url_rule.rule:
+            return {"error": "Package not found"}, 404
+        return render_template("404.html"), 404
 
     if package.depends:
         depends = [
@@ -105,6 +110,20 @@ def package(name):
         ]
 
     db.session.close()
+
+    if "/api/" in request.url_rule.rule:
+        return {
+            "name": package.name,
+            "description": package.description,
+            "version": package.version,
+            "depends": [dep.name for dep in depends],
+            "recommends": [rec.name for rec in recommends],
+            "suggests": [sug.name for sug in suggests],
+            "conflicts": [conf.name for conf in conflicts],
+            "replaces": [rep.name for rep in replaces],
+            "provides": [prov.name for prov in provides],
+        }, 200
+
     return render_template(
         "package.html",
         package=package,
