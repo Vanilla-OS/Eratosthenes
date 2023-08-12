@@ -112,17 +112,18 @@ def package(name):
     db.session.close()
 
     if "/api/" in request.url_rule.rule:
-        return {
+        package_info = {
             "name": package.name,
             "description": package.description,
             "version": package.version,
-            "depends": [dep.name for dep in depends],
-            "recommends": [rec.name for rec in recommends],
-            "suggests": [sug.name for sug in suggests],
-            "conflicts": [conf.name for conf in conflicts],
-            "replaces": [rep.name for rep in replaces],
-            "provides": [prov.name for prov in provides],
-        }, 200
+            "depends": [dep.name for dep in depends if hasattr(dep, "name")],
+            "recommends": [rec.name for rec in recommends if hasattr(rec, "name")],
+            "suggests": [sug.name for sug in suggests if hasattr(sug, "name")],
+            "conflicts": [conf.name for conf in conflicts if hasattr(conf, "name")],
+            "replaces": [rep.name for rep in replaces if hasattr(rep, "name")],
+            "provides": [prov.name for prov in provides if hasattr(prov, "name")],
+        }
+        return package_info, 200
 
     return render_template(
         "package.html",
