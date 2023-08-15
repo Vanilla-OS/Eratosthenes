@@ -35,12 +35,15 @@ class AptIndexer:
             filename TEXT)"""
         )
         self.db.commit()
-
-    def index(self):
-        logger.info("Indexing packages...")
+    
+    def cleanup(self):
         self.cursor.execute("DELETE FROM packages")
         self.db.commit()
-        packages = requests.get(REPO_URL).text.split("\n\n")
+
+    def index(self, component):
+        logger.info("Indexing packages in %s..." % component)
+        repo = REPO_URL
+        packages = requests.get(repo.replace("@", component)).text.split("\n\n")
         values = []
 
         for package in packages:
