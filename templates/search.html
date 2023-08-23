@@ -14,9 +14,9 @@
                 <table fabr-table fabr-settings="search|sort" class="table">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Version</th>
-                            <th>Description</th>
+                            <td><a href="{{ url_for('package', name=package.name) }}">{{ package.name }}</a></td>
+                            <td>{{ package.version }}</td>
+                            <td>{{ package.description }}</td>
                         </tr>
                     </thead>
                     <tbody>
