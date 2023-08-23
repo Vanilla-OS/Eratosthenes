@@ -22,7 +22,7 @@ from flask import (
     request,
 )
 
-from config import DEBUG, PORT
+from config import DEBUG, PORT, REPO_COMPONENTS
 from conn import DbSession
 from indexer import AptIndexer
 from models import Package
@@ -140,7 +140,10 @@ def package(name):
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         if sys.argv[1] == "index":
-            AptIndexer().index()
+            apt = AptIndexer()
+            apt.cleanup()
+            for component in REPO_COMPONENTS:
+                apt.index(component)
         elif sys.argv[1] == "serve":
             app.run(debug=DEBUG, port=PORT)
             sys.exit(0)
