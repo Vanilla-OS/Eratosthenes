@@ -5,18 +5,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="This site provides you with information about all the packages available in the Vanilla OS repository.">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
         <link rel="stylesheet" href="/static/css/index.css">
     </head>
     <body fabr-loader style="visibility: hidden">
         <div class="container">
             <header>
-                <span class="logo">Vanilla OS Packages</span>
-                <ul>
-                    <li><a href="/">Search</a></li>
-                    <li><a href="https://repo.vanillaos.org">Repository</a></li>
-                </ul>
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                        <span class="navbar-item logo">Vanilla OS Packages</span>
+                    </div>
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                          <div class="field is-grouped">
+                            <p class="control">
+                            <a class="navbar-item" href="/">Search</a>
+                            </p>
+                            <p class="control">
+                            <a class="navbar-item" href="https://repo.vanillaos.org">Repository</a>
+                            </p>
+                        </div>
+                        </div>
+                </nav>
             </header>
-        </div>
+        </div>       
 
         {% block content %}{% endblock %}
         <script fabr-lib src="/static/js/fabr.min.js"></script>
