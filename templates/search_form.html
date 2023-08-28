@@ -1,4 +1,8 @@
-<form action="{{ url_for('search') }}" method="get" class="form-search">
-    <span class="material-icons form-icon">search</span>
-    <input type="text" name="q" class="search-field" placeholder="Search for packages...">
-</form>
+<form action="{{ url_for('search') }}" method="get" class="form">
+    <div class="field">
+      <input type="text" name="q" class="input" placeholder="Search for packages...">
+      <span class="icon is-left">
+        <i class="fas fa-search"></i>
+      </span>
+    </div>
+  </form>  
