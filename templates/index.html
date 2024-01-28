@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <div class="container container-small v-center search search-big">
-        <p id="search">Search for packages in the Vanilla OS Repository.</p>
-        {% include 'search_form.html' %}
-        <small>Packages are indexed every time the repository is re-aligned with Debian's, with a delay of a few hours.</small>
+<div class="columns is-centered">
+    <div class="column is-half has-text-centered">
+        <h2 class="title is-size-4">Search for Packages</h2>
+        <div class="field">
+            {% include 'search_form.html' %}
+        </div>
+        <p class="is-size-7 has-text-grey-light">
+            Packages are indexed every time the repository is re-synced with Debian.
+        </p>
     </div>
+</div>
 {% endblock %}

@@ -16,11 +16,7 @@
 import logging
 import sys
 
-from flask import (
-    Flask,
-    render_template,
-    request,
-)
+from flask import Flask, render_template, request, abort
 
 from config import DEBUG, PORT, REPO_COMPONENTS
 from conn import DbSession
@@ -38,9 +34,18 @@ def index():
     return render_template("index.html")
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
+
+
 @app.route("/search")
 def search():
     query = request.args.get("q")
+
+    if not query:
+        return abort(404)
+
     db = DbSession()
     packages = (
         db.session.query(Package).filter(Package.name.like("%" + query + "%")).all()

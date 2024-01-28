@@ -1,114 +1,109 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <div class="container panel-wrapper">
-        <table class="table">
-            <tr>
-                <th>Name</th>
-                <td>{{ package.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ package.description }}</td>
-            </tr>
-            <tr>
-                <th>Version</th>
-                <td>{{ package.version }}</td>
-            </tr>
-            <tr>
-                <th>Section</th>
-                <td>{{ package.section }}</td>
-            </tr>
-            <tr>
-                <th>Homepage</th>
-                <td><a href="/package/{{ package.name }}">{{ package.name }}</a></td>
-            </tr>
-            <tr>
-                <th>Maintainer</th>
-                <td>{{ package.maintainer }}</td>
-            </tr>
-            <tr>
-                <th><a href="#depends">Depends</th>
-                <td>{{ package.depends }}</td>
-            </tr>
-            <tr>
-                <th><a href="#recommends">Recommends</th>
-                <td>{{ package.recommends }}</td>
-            </tr>
-            <tr>
-                <th><a href="#suggests">Suggests</th>
-                <td>{{ package.suggests }}</td>
-            </tr>
-            <tr>
-                <th><a href="#conflicts">Conflicts</th>
-                <td>{{ package.conflicts }}</td>
-            </tr>
-            <tr>
-                <th><a href="#replaces">Replaces</th>
-                <td>{{ package.replaces }}</td>
-            </tr>
-            <tr>
-                <th><a href="#provides">Provides</th>
-                <td>{{ package.provides }}</td>
-            </tr>
-            <tr>
-                <th>Filename</th>
-                <td>{{ package.filename }}</td>
-            </tr>
-        </table>
+<table class="table is-fullwidth">
+    <tr>
+        <th>Name</th>
+        <td>{{ package.name }}</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>{{ package.description }}</td>
+    </tr>
+    <tr>
+        <th>Version</th>
+        <td>{{ package.version }}</td>
+    </tr>
+    <tr>
+        <th>Section</th>
+        <td>{{ package.section }}</td>
+    </tr>
+    <tr>
+        <th>Homepage</th>
+        <td><a href="/package/{{ package.name }}">{{ package.name }}</a></td>
+    </tr>
+    <tr>
+        <th>Maintainer</th>
+        <td>{{ package.maintainer }}</td>
+    </tr>
+    <tr>
+        <th><a href="#depends">Depends</a></th>
+        <td>{{ package.depends }}</td>
+    </tr>
+    <tr>
+        <th><a href="#recommends">Recommends</a></th>
+        <td>{{ package.recommends }}</td>
+    </tr>
+    <tr>
+        <th><a href="#suggests">Suggests</a></th>
+        <td>{{ package.suggests }}</td>
+    </tr>
+    <tr>
+        <th><a href="#conflicts">Conflicts</a></th>
+        <td>{{ package.conflicts }}</td>
+    </tr>
+    <tr>
+        <th><a href="#replaces">Replaces</a></th>
+        <td>{{ package.replaces }}</td>
+    </tr>
+    <tr>
+        <th><a href="#provides">Provides</a></th>
+        <td>{{ package.provides }}</td>
+    </tr>
+    <tr>
+        <th>Filename</th>
+        <td>{{ package.filename }}</td>
+    </tr>
+</table>
 
-        <table fabr-table fabr-settings="search|sort" class="table">
-            <th><a name="depends">Depends</a></th>
-            {% for depend in depends %}
-                <tr>
-                    <td><a href="/package/{{ depend.name }}">{{ depend.name }}</a></td>
-                </tr>
+
+<div class="tabs is-centered">
+    <ul id="tabList">
+        {% for item, items in [('Depends', depends), ('Recommends', recommends), ('Suggests', suggests), ('Conflicts',
+        conflicts), ('Replaces', replaces), ('Provides', provides)] %}
+        <li {% if loop.first %}class="is-active" {% endif %} data-target="{{ item|lower }}"><a
+                href="javascript:void(0);">{{ item }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% for item, items in [('Depends', depends), ('Recommends', recommends), ('Suggests', suggests), ('Conflicts',
+conflicts), ('Replaces', replaces), ('Provides', provides)] %}
+<div id="{{ item|lower }}Table" class="table-container {% if not loop.first %}is-hidden{% endif %}">
+    <table fabr-table fabr-settings="search|sort" class="table">
+        <thead>
+            <tr>
+                <th><a name="{{ item|lower }}">{{ item }}</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td><a href="/package/{{ item.name }}">{{ item.name }}</a></td>
+            </tr>
             {% endfor %}
-        </table>
+        </tbody>
+    </table>
+</div>
+{% endfor %}
 
-        <table fabr-table fabr-settings="search|sort" class="table">
-            <th><a name="recommends">Recommends</a></th>
-            {% for recommend in recommends %}
-                <tr>
-                    <td><a href="/package/{{ recommend.name }}">{{ recommend.name }}</a></td>
-                </tr>
-            {% endfor %}
-        </table>
+<script>
+    document.getElementById('tabList').addEventListener('click', function (e) {
+        if (e.target.tagName === 'A' && e.target.parentElement.dataset.target) {
+            var targetId = e.target.parentElement.dataset.target;
 
-        <table fabr-table fabr-settings="search|sort" class="table">
-            <th><a name="suggests">Suggests</a></th>
-            {% for suggest in suggests %}
-                <tr>
-                    <td><a href="/package/{{ suggest.name }}">{{ suggest.name }}</a></td>
-                </tr>
-            {% endfor %}
-        </table>
+            document.querySelectorAll('.table-container').forEach(function (tableContainer) {
+                tableContainer.classList.add('is-hidden');
+            });
 
-        <table fabr-table fabr-settings="search|sort" class="table">
-            <th><a name="conflicts">Conflicts</a></th>
-            {% for conflict in conflicts %}
-                <tr>
-                    <td><a href="/package/{{ conflict.name }}">{{ conflict.name }}</a></td>
-                </tr>
-            {% endfor %}
-        </table>
+            document.querySelectorAll('#tabList li').forEach(function (tab) {
+                tab.classList.remove('is-active');
+            });
 
-        <table fabr-table fabr-settings="search|sort" class="table">
-            <th><a name="replaces">Replaces</a></th>
-            {% for replace in replaces %}
-                <tr>
-                    <td><a href="/package/{{ replace.name }}">{{ replace.name }}</a></td>
-                </tr>
-            {% endfor %}
-        </table>
+            document.getElementById(targetId + 'Table').classList.remove('is-hidden');
 
-        <table fabr-table fabr-settings="search|sort" class="table">
-            <th><a name="provides">Provides</a></th>
-            {% for provide in provides %}
-                <tr>
-                    <td><a href="/package/{{ provide.name }}">{{ provide.name }}</a></td>
-                </tr>
-            {% endfor %}
-        </table>
-
-    </div>
+            e.target.parentElement.classList.add('is-active');
+        }
+    });
+</script>
 {% endblock %}

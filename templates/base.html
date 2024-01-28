@@ -1,24 +1,66 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Vanilla OS Packages Search</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="This site provides you with information about all the packages available in the Vanilla OS repository.">
-        <link rel="stylesheet" href="/static/css/index.css">
-    </head>
-    <body fabr-loader style="visibility: hidden">
-        <div class="container">
-            <header>
-                <span class="logo">Vanilla OS Packages</span>
-                <ul>
-                    <li><a href="/">Search</a></li>
-                    <li><a href="https://repo.vanillaos.org">Repository</a></li>
-                </ul>
-            </header>
-        </div>
+<html lang="en">
 
-        {% block content %}{% endblock %}
-        <script fabr-lib src="/static/js/fabr.min.js"></script>
-    </body>
+<head>
+    <title>Vanilla OS Packages Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="This site provides you with information about all the packages available in the Vanilla OS repository">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+
+<body>
+    <div class="topbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <h1 class="title">Vanilla OS Packages</h1>
+                </div>
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a class="button is-light" title="Go to search" href="/">
+                                    <span class="icon is-small">
+                                        <i class="material-icons">search</i>
+                                    </span>
+                                </a>
+                                <a class="button is-light" title="Go to repo" href="https://repo2.vanillaos.org">
+                                    <span class="icon is-small">
+                                        <i class="material-icons">storage</i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                Eratosthenes powered by
+                <a href="https://vanillaos.org" target="_blank">
+                    Vanilla OS
+                </a>.
+            </p>
+        </div>
+    </footer>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bulma@0.9.3/js/bulma.min.js"></script>
+    <script fabr-lib src="/static/js/fabr.min.js"></script>
+</body>
+
 </html>
