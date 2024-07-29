@@ -4,3 +4,4 @@ __pycache__
 env
 config.py
 poetry.lock
+node_modules/
