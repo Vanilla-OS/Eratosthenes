@@ -26,6 +26,27 @@ To run the web server, run `python eratosthenes.py serve`. This will start a web
 server on port `5000` by default, but you can change it in the configuration
 file as explained above.
 
+## Development
+
+### Environment
+
+```bash
+python3 -m venv env
+poenv install
+```
+
+### Start the server
+
+```bash
+python eratosthenes.py serve
+```
+
+### Re-build Tailwind CSS
+
+```bash
+npx tailwindcss -i ./static/src/input.css -o ./static/dist/css/output.css --watch
+```
+
 ## Why Eratosthenes?
 Eratosthenes was a Greek mathematician, astronomer, and geographer. This is a
 repository indexer and browser, so I thought it was a good name.

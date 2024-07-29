@@ -51,7 +51,9 @@ def search():
         db.session.query(Package).filter(Package.name.like("%" + query + "%")).all()
     )
     db.session.close()
-    return render_template("search.html", packages=packages)
+    return render_template(
+        "search.html", packages=packages, show_search_bar=True, query=query
+    )
 
 
 @app.route("/api/pkg/<name>")
@@ -139,6 +141,7 @@ def package(name):
         conflicts=conflicts,
         replaces=replaces,
         provides=provides,
+        show_search_bar=True,
     )
 
 

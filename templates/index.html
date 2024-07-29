@@ -1,15 +1,46 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="columns is-centered">
-    <div class="column is-half has-text-centered">
-        <h2 class="title is-size-4">Search for Packages</h2>
-        <div class="field">
-            {% include 'search_form.html' %}
+<section class="bg-gray-100 dark:bg-gray-800 text-black dark:text-gray-200 text-center py-8">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold">Search for Packages</h1>
+        <p class="mt-4">Type the exact name of the package you are looking for in the search bar below.</p>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+            <form action="{{ url_for('search') }}" method="get" class="mt-4">
+                <div class="relative">
+                    <div
+                        class="flex items-center border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-opacity-50">
+                        <input class="flex-grow p-4 text-gray-600 dark:text-gray-300 bg-transparent focus:outline-none"
+                            type="text" placeholder="Search for packages..." name="q">
+                        <i class="material-symbols-outlined p-2 text-gray-400 dark:text-gray-500">search</i>
+                    </div>
+                </div>
+            </form>
         </div>
-        <p class="is-size-7 has-text-grey-light">
-            Packages are indexed every time the repository is re-synced with Debian.
-        </p>
+    </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+            <span class="material-symbols-outlined text-blue-500 text-3xl">search</span>
+            <h2 class="text-xl font-bold mt-2">Browse Packages</h2>
+            <p class="mt-2 text-gray-600 dark:text-gray-400">Explore all available packages in the Vanilla OS
+                repository.
+                Find software, tools, and libraries for your needs.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+            <span class="material-symbols-outlined text-blue-500 text-3xl">info</span>
+            <h2 class="text-xl font-bold mt-2">Package Details</h2>
+            <p class="mt-2 text-gray-600 dark:text-gray-400">Get detailed information on each package including version,
+                dependencies, and installation instructions.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+            <span class="material-symbols-outlined text-blue-500 text-3xl">update</span>
+            <h2 class="text-xl font-bold mt-2">Indexing Updates</h2>
+            <p class="mt-2 text-gray-600 dark:text-gray-400">Packages are indexed every time the repository is re-synced
+                with Debian.</p>
+        </div>
     </div>
 </div>
 {% endblock %}
