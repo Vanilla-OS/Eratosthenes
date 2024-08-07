@@ -44,7 +44,7 @@ python eratosthenes.py serve
 ### Re-build Tailwind CSS
 
 ```bash
-npx tailwindcss -i ./static/src/input.css -o ./static/dist/css/output.css --watch
+pnpx tailwindcss -i ./static/src/input.css -o ./static/dist/css/output.css --watch
 ```
 
 ## Why Eratosthenes?
