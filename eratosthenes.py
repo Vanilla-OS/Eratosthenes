@@ -42,13 +42,17 @@ def page_not_found(e):
 @app.route("/search")
 def search():
     query = request.args.get("q")
+    branch = request.args.get("branch") or request.cookies.get("branch", "main")
 
     if not query:
         return abort(404)
 
     db = DbSession()
     packages = (
-        db.session.query(Package).filter(Package.name.like("%" + query + "%")).all()
+        db.session.query(Package)
+        .filter(Package.name.like(f"%{query}%"))
+        .filter(Package.branch == branch)
+        .all()
     )
     db.session.close()
     return render_template(
@@ -59,8 +63,9 @@ def search():
 @app.route("/api/pkg/<name>")
 @app.route("/package/<name>")
 def package(name):
+    branch = request.cookies.get("branch", "main")
     db = DbSession()
-    package = db.session.query(Package).filter_by(name=name).first()
+    package = db.session.query(Package).filter_by(name=name, branch=branch).first()
     depends = []
     recommends = []
     suggests = []
@@ -150,8 +155,7 @@ if __name__ == "__main__":
         if sys.argv[1] == "index":
             apt = AptIndexer()
             apt.cleanup()
-            for component in REPO_COMPONENTS:
-                apt.index(component)
+            apt.index()
         elif sys.argv[1] == "serve":
             app.run(debug=DEBUG, port=PORT)
             sys.exit(0)

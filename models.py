@@ -40,6 +40,7 @@ class Package(Model, BaseMixin):
     __tablename__ = "packages"
 
     id = Column(Integer, primary_key=True)
+    branch = Column(String(80), unique=False, nullable=False)
     name = Column(String(80), unique=True, nullable=False)
     version = Column(String(80), unique=False, nullable=False)
     description = Column(String(512), unique=False, nullable=False)
