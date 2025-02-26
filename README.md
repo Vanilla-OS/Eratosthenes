@@ -13,10 +13,10 @@ You can install all the requirements with `pip install -r requirements.txt`.
 
 ## Usage
 
-To run the indexer, simply run `python eratosthenes.py index`. This will create
+To run the indexer, simply run `python3 eratosthenes.py index`. This will create
 the database and index the repository.
 
-To run the web server, run `python eratosthenes.py serve`. This will start a web
+To run the web server, run `python3 eratosthenes.py serve`. This will start a web
 server on port `5000` by default, but you can change it in the configuration
 file as explained below.
 
@@ -58,8 +58,8 @@ pip install -r requirements.txt
 ### Build Index & Start the server
 
 ```bash
-python eratosthenes.py index
-python eratosthenes.py serve
+python3 eratosthenes.py index
+python3 eratosthenes.py serve
 ```
 
 ### Re-build Tailwind CSS
