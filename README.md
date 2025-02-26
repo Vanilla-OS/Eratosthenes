@@ -4,6 +4,7 @@
 </div>
 
 ---
+
 <p align="center">Eratosthenes is an APT repository browser and indexer, designed for Vanilla OS.</p>
 
 ## Requirements
@@ -50,12 +51,14 @@ Where,
 
 ```bash
 python3 -m venv env
-poenv install
+source ./env/bin/activate
+pip install -r requirements.txt
 ```
 
-### Start the server
+### Build Index & Start the server
 
 ```bash
+python eratosthenes.py index
 python eratosthenes.py serve
 ```
 
