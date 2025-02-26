@@ -39,14 +39,14 @@ DEBUG = True
 Where,
 
 - `DB_PATH` allows setting the path to the Eratosthenes database containing the repository index.
-- `BRANCHES` allows adding branches from multiple repositories or within the same repository (it is displyed in the frontend in the order configured here).
+- `BRANCHES` allows adding branches from multiple repositories or within the same repository (it is displayed in the frontend in the same order as configured here).
 - `REPO_COMPONENTS` allows adding components or tags for repositories.
 - `PORT` allows setting Eratosthenes to run in a custom port.
 - `DEBUG` allows displaying a debug log in the server's output
 
 ## Setting up a Development server
 
-### Environment
+### Set the Environment
 
 ```bash
 python3 -m venv env
