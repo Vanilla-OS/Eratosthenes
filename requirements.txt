@@ -1,0 +1,5 @@
+flask
+requests
+sqlalchemy
+sqlite3
+logging
