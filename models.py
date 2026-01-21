@@ -42,7 +42,7 @@ class Package(Model, BaseMixin):
 
     id = Column(Integer, primary_key=True)
     branch = Column(String(80), unique=False, nullable=False)
-    name = Column(String(80), unique=True, nullable=False)
+    name = Column(String(80), unique=False, nullable=False)
     version = Column(String(80), unique=False, nullable=False)
     description = Column(String(512), unique=False, nullable=False)
     section = Column(String(80), unique=False, nullable=False)
@@ -55,6 +55,7 @@ class Package(Model, BaseMixin):
     replaces = Column(String(512), unique=False, nullable=False)
     provides = Column(String(512), unique=False, nullable=False)
     filename = Column(String(512), unique=False, nullable=False)
+    arch = Column(String(20), unique=False, nullable=False)
 
     def __repr__(self):
         return "<Package %r>" % self.name

@@ -10,6 +10,18 @@
                 <div class="relative">
                     <div
                         class="flex items-center border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-opacity-50">
+                        <select id="branchSelectorIndex" name="branch"
+                            class="px-4 py-2 text-gray-600 dark:text-gray-300 bg-transparent focus:outline-none border-r border-gray-200 dark:border-gray-600">
+                            <option value="main" {% if branch=='main' %}selected{% endif %}>main</option>
+                            <option value="testing" {% if branch=='testing' %}selected{% endif %}>testing</option>
+                        </select>
+                        <select id="archSelectorIndex" name="arch"
+                            class="px-4 py-2 text-gray-600 dark:text-gray-300 bg-transparent focus:outline-none border-r border-gray-200 dark:border-gray-600">
+                            {% for arch in archs %}
+                            <option value="{{ arch }}" {% if current_arch==arch %}selected{% endif %}>{{ arch }}
+                            </option>
+                            {% endfor %}
+                        </select>
                         <input class="flex-grow p-4 text-gray-600 dark:text-gray-300 bg-transparent focus:outline-none"
                             type="text" placeholder="Search for packages..." name="q">
                         <i class="material-symbols-outlined p-2 text-gray-400 dark:text-gray-500">search</i>

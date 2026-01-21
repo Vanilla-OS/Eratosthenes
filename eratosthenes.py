@@ -19,7 +19,7 @@ import sys
 
 from flask import Flask, render_template, request, abort
 
-from config import DEBUG, PORT, REPO_COMPONENTS
+from config import DEBUG, PORT, REPO_COMPONENTS, ARCHS
 from conn import DbSession
 from indexer import AptIndexer
 from models import Package
@@ -32,7 +32,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    branch = request.cookies.get("branch", "main")
+    arch = request.cookies.get("arch", "amd64")
+    return render_template("index.html", branch=branch, current_arch=arch, archs=ARCHS)
 
 
 @app.errorhandler(404)
@@ -44,6 +46,7 @@ def page_not_found(e):
 def search():
     query = request.args.get("q")
     branch = request.args.get("branch") or request.cookies.get("branch", "main")
+    arch = request.args.get("arch") or request.cookies.get("arch", "amd64")
 
     if not query:
         return abort(404)
@@ -52,12 +55,18 @@ def search():
     packages = (
         db.session.query(Package)
         .filter(Package.name.like(f"%{query}%"))
-        .filter(Package.branch == branch)
+        .filter(Package.branch == branch, Package.arch == arch)
         .all()
     )
     db.session.close()
     return render_template(
-        "search.html", packages=packages, show_search_bar=True, query=query
+        "search.html",
+        packages=packages,
+        show_search_bar=True,
+        query=query,
+        branch=branch,
+        current_arch=arch,
+        archs=ARCHS,
     )
 
 
@@ -65,8 +74,9 @@ def search():
 @app.route("/package/<name>")
 def package(name):
     branch = request.cookies.get("branch", "main")
+    arch = request.args.get("arch") or request.cookies.get("arch", "amd64")
     db = DbSession()
-    package = db.session.query(Package).filter_by(name=name, branch=branch).first()
+    package = db.session.query(Package).filter_by(name=name, branch=branch, arch=arch).first()
     depends = []
     recommends = []
     suggests = []
@@ -129,6 +139,7 @@ def package(name):
             "name": package.name,
             "description": package.description,
             "version": package.version,
+            "arch": package.arch,
             "depends": [dep.name for dep in depends if hasattr(dep, "name")],
             "recommends": [rec.name for rec in recommends if hasattr(rec, "name")],
             "suggests": [sug.name for sug in suggests if hasattr(sug, "name")],
@@ -148,6 +159,9 @@ def package(name):
         replaces=replaces,
         provides=provides,
         show_search_bar=True,
+        branch=branch,
+        current_arch=arch,
+        archs=ARCHS,
     )
 
 

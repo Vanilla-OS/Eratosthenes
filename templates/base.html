@@ -27,8 +27,14 @@
                         class="flex items-center border bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-opacity-50 border-gray-200 dark:border-gray-600">
                         <select id="branchSelector" name="branch"
                             class="px-4 py-2 text-gray-600 dark:text-gray-300 bg-transparent focus:outline-none border-r border-gray-300 dark:border-gray-600">
-                            <option value="main">main</option>
-                            <option value="testing">testing</option>
+                            <option value="main" {% if branch == 'main' %}selected{% endif %}>main</option>
+                            <option value="testing" {% if branch == 'testing' %}selected{% endif %}>testing</option>
+                        </select>
+                        <select id="archSelector" name="arch"
+                            class="px-4 py-2 text-gray-600 dark:text-gray-300 bg-transparent focus:outline-none border-r border-gray-300 dark:border-gray-600">
+                            {% for arch in archs %}
+                            <option value="{{ arch }}" {% if current_arch == arch %}selected{% endif %}>{{ arch }}</option>
+                            {% endfor %}
                         </select>
                         <input
                             class="flex-1 px-4 py-2 text-gray-600 dark:text-gray-300 bg-transparent focus:outline-none w-full"
@@ -60,14 +66,29 @@
     </footer>
 
     <script>
-        document.getElementById('branchSelector').addEventListener('change', function () {
+        document.getElementById('branchSelector')?.addEventListener('change', function () {
             document.cookie = "branch=" + this.value + "; path=/";
             location.reload();
         });
 
+        document.getElementById('archSelector')?.addEventListener('change', function () {
+            document.cookie = "arch=" + this.value + "; path=/";
+            location.reload();
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
-            const branch = document.cookie.split('; ').find(row => row.startsWith('branch=')).split('=')[1];
-            document.getElementById('branchSelector').value = branch;
+            const cookies = document.cookie.split('; ').reduce((acc, cookie) => {
+                const [key, value] = cookie.split('=');
+                acc[key] = value;
+                return acc;
+            }, {});
+
+            if (cookies.branch && document.getElementById('branchSelector')) {
+                document.getElementById('branchSelector').value = cookies.branch;
+            }
+            if (cookies.arch && document.getElementById('archSelector')) {
+                document.getElementById('archSelector').value = cookies.arch;
+            }
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
