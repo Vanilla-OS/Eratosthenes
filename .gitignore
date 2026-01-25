@@ -5,4 +5,4 @@ env
 poetry.lock
 node_modules/
 eratosthenes_data/
-eratosthenes
+/eratosthenes
