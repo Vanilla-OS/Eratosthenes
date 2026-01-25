@@ -1,0 +1,48 @@
+{{ define "content" }}
+<section
+    class="bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 text-center py-16 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold tracking-tight">Results for "{{ .Query }}"</h1>
+        {{ if not .Packages }}
+        <p class="mt-4 text-lg text-zinc-500 dark:text-zinc-400">No packages found matching your criteria.</p>
+        {{ else }}
+        <p class="mt-4 text-lg text-zinc-500 dark:text-zinc-400">Found {{ len .Packages }} packages.</p>
+        {{ end }}
+    </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-20">
+    <div class="overflow-hidden border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-sm">
+        <table class="min-w-full bg-white dark:bg-zinc-900 text-left text-sm text-zinc-500 dark:text-zinc-400">
+            <thead
+                class="bg-zinc-50 dark:bg-zinc-800/50 text-xs uppercase font-medium text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800">
+                <tr>
+                    <th scope="col" class="px-6 py-4 tracking-wider">Name</th>
+                    <th scope="col" class="px-6 py-4 tracking-wider">Version</th>
+                    <th scope="col" class="px-6 py-4 tracking-wider">Description</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800">
+                {{ range .Packages }}
+                <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/10 transition-colors">
+                    <td class="px-6 py-4 whitespace-nowrap font-medium text-zinc-900 dark:text-zinc-200">
+                        <a href="/package/{{ .Name }}" class="text-brand-600 dark:text-brand-400 hover:underline">
+                            {{ .Name }}
+                        </a>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-zinc-600 dark:text-zinc-400">
+                        <span
+                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200">
+                            {{ .Version }}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 text-zinc-600 dark:text-zinc-400">
+                        {{ .Description }}
+                    </td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,165 @@
+{{ define "content" }}
+<section
+    class="bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 text-center py-16 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold tracking-tight">Package Details</h1>
+        <p class="mt-4 text-lg text-zinc-500 dark:text-zinc-400">Information about <span
+                class="font-semibold text-zinc-900 dark:text-zinc-100">"{{ .Package.Name }}"</span></p>
+    </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Name -->
+        <div
+            class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm p-6 flex items-start">
+            <span class="material-symbols-outlined text-zinc-400 dark:text-zinc-500 mr-4 text-2xl">label</span>
+            <div>
+                <h2 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Name</h2>
+                <p class="font-medium text-zinc-900 dark:text-zinc-100">{{ .Package.Name }}</p>
+            </div>
+        </div>
+        <!-- Description -->
+        <div
+            class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm p-6 flex items-start md:col-span-2">
+            <span class="material-symbols-outlined text-zinc-400 dark:text-zinc-500 mr-4 text-2xl">description</span>
+            <div>
+                <h2 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Description
+                </h2>
+                <p class="font-medium text-zinc-900 dark:text-zinc-100 leading-relaxed">{{ .Package.Description }}</p>
+            </div>
+        </div>
+        <!-- Version -->
+        <div
+            class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm p-6 flex items-start">
+            <span class="material-symbols-outlined text-zinc-400 dark:text-zinc-500 mr-4 text-2xl">update</span>
+            <div>
+                <h2 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Version
+                </h2>
+                <p class="font-medium text-zinc-900 dark:text-zinc-100">{{ .Package.Version }}</p>
+            </div>
+        </div>
+        <!-- Architecture -->
+        <div
+            class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm p-6 flex items-start">
+            <span class="material-symbols-outlined text-zinc-400 dark:text-zinc-500 mr-4 text-2xl">database</span>
+            <div>
+                <h2 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
+                    Architecture</h2>
+                <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200">
+                    {{ .Package.Arch }}
+                </span>
+            </div>
+        </div>
+        <!-- Section -->
+        <div
+            class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm p-6 flex items-start">
+            <span class="material-symbols-outlined text-zinc-400 dark:text-zinc-500 mr-4 text-2xl">category</span>
+            <div>
+                <h2 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Section
+                </h2>
+                <p class="font-medium text-zinc-900 dark:text-zinc-100">{{ .Package.Section }}</p>
+            </div>
+        </div>
+        <!-- Homepage -->
+        <div
+            class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm p-6 flex items-start">
+            <span class="material-symbols-outlined text-zinc-400 dark:text-zinc-500 mr-4 text-2xl">home</span>
+            <div class="overflow-hidden">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Homepage
+                </h2>
+                <p class="truncate"><a href="{{ .Package.Homepage }}" target="_blank"
+                        class="text-brand-600 dark:text-brand-400 hover:underline font-medium">{{ .Package.Homepage
+                        }}</a>
+                </p>
+            </div>
+        </div>
+        <!-- Maintainer -->
+        <div
+            class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm p-6 flex items-start md:col-span-2">
+            <span class="material-symbols-outlined text-zinc-400 dark:text-zinc-500 mr-4 text-2xl">person</span>
+            <div>
+                <h2 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Maintainer
+                </h2>
+                <p class="font-medium text-zinc-900 dark:text-zinc-100">{{ .Package.Maintainer }}</p>
+            </div>
+        </div>
+        <!-- Filename -->
+        <div
+            class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm p-6 flex items-start lg:col-span-3">
+            <span class="material-symbols-outlined text-zinc-400 dark:text-zinc-500 mr-4 text-2xl">folder_zip</span>
+            <div class="overflow-hidden">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">Filename
+                </h2>
+                <p class="font-mono text-sm text-zinc-600 dark:text-zinc-300 break-all">{{ .Package.Filename }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-20">
+    <div class="flex justify-center mb-8">
+        <div class="inline-flex p-1 bg-zinc-100 dark:bg-zinc-800 rounded-xl" id="tabList">
+            {{ range $i, $tab := .Tabs }}
+            <button
+                class="px-4 py-2 text-sm font-medium rounded-lg transition-all {{ if eq $i 0 }}bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm{{ else }}text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200{{ end }}"
+                data-target="{{ $tab.ID }}" onclick="changeTab('{{ $tab.ID }}', this)">
+                {{ $tab.Name }}
+            </button>
+            {{ end }}
+        </div>
+    </div>
+
+    {{ range $i, $tab := .Tabs }}
+    <div id="{{ $tab.ID }}Table" class="tables {{ if ne $i 0 }}hidden{{ end }}">
+        <div class="overflow-hidden border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-sm">
+            <table class="min-w-full bg-white dark:bg-zinc-900 text-left text-sm text-zinc-500 dark:text-zinc-400">
+                <thead
+                    class="bg-zinc-50 dark:bg-zinc-800/50 text-xs uppercase font-medium text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800">
+                    <tr>
+                        <th class="px-6 py-4 tracking-wider">{{ $tab.Name }} Packages</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800">
+                    {{ if $tab.Items }}
+                    {{ range $tab.Items }}
+                    <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/10 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap font-medium text-zinc-900 dark:text-zinc-200">
+                            <a href="/package/{{ .Name }}" class="text-brand-600 dark:text-brand-400 hover:underline">{{
+                                .Name }}</a>
+                        </td>
+                    </tr>
+                    {{ end }}
+                    {{ else }}
+                    <tr>
+                        <td class="px-6 py-8 text-center text-zinc-500 dark:text-zinc-400">
+                            No items found.
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{ end }}
+</div>
+
+<script>
+    function changeTab(tabID, btn) {
+        // Hide all tables
+        document.querySelectorAll('.tables').forEach(el => el.classList.add('hidden'));
+        // Show target table
+        document.getElementById(tabID + 'Table').classList.remove('hidden');
+
+        // Reset all buttons style
+        const buttons = document.getElementById('tabList').querySelectorAll('button');
+        buttons.forEach(b => {
+            b.className = "px-4 py-2 text-sm font-medium rounded-lg transition-all text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200";
+        });
+
+        // Set active button style
+        btn.className = "px-4 py-2 text-sm font-medium rounded-lg transition-all bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm";
+    }
+</script>
+{{ end }}

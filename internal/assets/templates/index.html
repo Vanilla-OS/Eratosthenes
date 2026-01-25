@@ -1,0 +1,166 @@
+{{ define "content" }}
+<section
+    class="bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 text-center py-16 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold tracking-tight">Search for Packages</h1>
+        <p class="mt-4 text-lg text-zinc-500 dark:text-zinc-400">Type the exact name of the package you are looking for
+            in the search bar below.</p>
+        <div class="max-w-4xl mx-auto mt-8">
+            <form action="/search" method="get">
+                <div class="relative group">
+                    <div
+                        class="flex items-center border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-2xl shadow-sm focus-within:shadow-md focus-within:border-brand-500 focus-within:ring-4 focus-within:ring-brand-500/10 transition-all overflow-visible p-1">
+
+                        <div
+                            class="flex items-center space-x-2 px-2 border-r border-zinc-200 dark:border-zinc-800 relative z-40">
+
+                            <!-- Hidden Inputs -->
+                            <input type="hidden" name="branch" id="inputBranchIndex" value="{{ .Branch }}">
+                            <input type="hidden" name="arch" id="inputArchIndex" value="{{ .CurrentArch }}">
+
+                            <!-- Branch Custom Select -->
+                            <div class="relative custom-select-index-container">
+                                <button type="button"
+                                    class="flex items-center gap-1 bg-transparent text-sm font-medium text-zinc-600 dark:text-zinc-400 focus:outline-none py-2 px-2 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors"
+                                    onclick="toggleIndexSelect('branchIndexDropdown')">
+                                    <span id="labelBranchIndex">{{ .Branch }}</span>
+                                    <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                                </button>
+                                <div id="branchIndexDropdown"
+                                    class="hidden absolute top-full left-0 mt-2 w-40 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-xl py-1 z-50 overflow-hidden">
+                                    <div class="px-1 py-1" onclick="selectIndexOption('branch', 'main')">
+                                        <div
+                                            class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 cursor-pointer text-sm text-zinc-600 dark:text-zinc-300">
+                                            <span>main</span>
+                                            {{ if eq .Branch "main" }}<span
+                                                class="material-symbols-outlined text-[16px] ml-auto text-brand-500">check</span>{{
+                                            end }}
+                                        </div>
+                                    </div>
+                                    <div class="px-1 py-1" onclick="selectIndexOption('branch', 'testing')">
+                                        <div
+                                            class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 cursor-pointer text-sm text-zinc-600 dark:text-zinc-300">
+                                            <span>testing</span>
+                                            {{ if eq .Branch "testing" }}<span
+                                                class="material-symbols-outlined text-[16px] ml-auto text-brand-500">check</span>{{
+                                            end }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Arch Custom Select -->
+                            <div class="relative custom-select-index-container">
+                                <button type="button"
+                                    class="flex items-center gap-1 bg-transparent text-sm font-medium text-zinc-600 dark:text-zinc-400 focus:outline-none py-2 px-2 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors"
+                                    onclick="toggleIndexSelect('archIndexDropdown')">
+                                    <span id="labelArchIndex">{{ .CurrentArch }}</span>
+                                    <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                                </button>
+                                <div id="archIndexDropdown"
+                                    class="hidden absolute top-full left-0 mt-2 w-40 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-xl py-1 z-50 overflow-hidden">
+                                    {{ range .Archs }}
+                                    <div class="px-1 py-1" onclick="selectIndexOption('arch', '{{ . }}')">
+                                        <div
+                                            class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 cursor-pointer text-sm text-zinc-600 dark:text-zinc-300">
+                                            <span>{{ . }}</span>
+                                            {{ if eq $.CurrentArch . }}<span
+                                                class="material-symbols-outlined text-[16px] ml-auto text-brand-500">check</span>{{
+                                            end }}
+                                        </div>
+                                    </div>
+                                    {{ end }}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <input
+                            class="flex-grow p-4 bg-transparent text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none text-lg"
+                            type="text" placeholder="Search for packages..." name="q" value="{{ .Query }}">
+
+                        <button type="submit"
+                            class="p-3 m-1 bg-transparent text-zinc-500 hover:text-brand-500 dark:text-zinc-400 dark:hover:text-brand-400 transition-colors duration-200">
+                            <span class="material-symbols-outlined block">search</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+            class="group p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-all hover:shadow-lg hover:shadow-brand-500/5">
+            <div
+                class="w-12 h-12 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform duration-200">
+                <span class="material-symbols-outlined text-brand-500 text-2xl">search</span>
+            </div>
+            <h2
+                class="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                Browse Packages</h2>
+            <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed">Explore all available packages in the Vanilla OS
+                repository. Find software, tools, and libraries for your needs.</p>
+        </div>
+
+        <div
+            class="group p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-all hover:shadow-lg hover:shadow-brand-500/5">
+            <div
+                class="w-12 h-12 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform duration-200">
+                <span class="material-symbols-outlined text-brand-500 text-2xl">info</span>
+            </div>
+            <h2
+                class="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                Package Details</h2>
+            <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed">Get detailed information on each package
+                including version, dependencies, and installation instructions.</p>
+        </div>
+
+        <div
+            class="group p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-all hover:shadow-lg hover:shadow-brand-500/5">
+            <div
+                class="w-12 h-12 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform duration-200">
+                <span class="material-symbols-outlined text-brand-500 text-2xl">update</span>
+            </div>
+            <h2
+                class="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                Indexing Updates</h2>
+            <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed">Packages are indexed every time the repository
+                is re-synced with Debian.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleIndexSelect(id) {
+        const dropdown = document.getElementById(id);
+        if (dropdown.classList.contains('hidden')) {
+            document.querySelectorAll('.custom-select-index-container > div[id$="Dropdown"]').forEach(el => el.classList.add('hidden'));
+            dropdown.classList.remove('hidden');
+        } else {
+            dropdown.classList.add('hidden');
+        }
+    }
+
+    function selectIndexOption(type, val) {
+        if (type === 'branch') {
+            document.getElementById('inputBranchIndex').value = val;
+            document.getElementById('labelBranchIndex').innerText = val;
+        } else if (type === 'arch') {
+            document.getElementById('inputArchIndex').value = val;
+            document.getElementById('labelArchIndex').innerText = val;
+        }
+        // Hide dropdowns
+        document.querySelectorAll('.custom-select-index-container > div[id$="Dropdown"]').forEach(el => el.classList.add('hidden'));
+    }
+
+    // Close when clicking outside
+    document.addEventListener('click', function (event) {
+        if (!event.target.closest('.custom-select-index-container')) {
+            document.querySelectorAll('.custom-select-index-container > div[id$="Dropdown"]').forEach(el => el.classList.add('hidden'));
+        }
+    });
+</script>
+{{ end }}

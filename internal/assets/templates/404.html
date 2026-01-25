@@ -1,0 +1,29 @@
+{{ define "content" }}
+<div class="min-h-[70vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+        <div class="flex justify-center mb-6">
+            <div
+                class="w-24 h-24 rounded-2xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center shadow-sm">
+                <span
+                    class="material-symbols-outlined text-zinc-400 dark:text-zinc-500 text-6xl">sentiment_dissatisfied</span>
+            </div>
+        </div>
+        <h1 class="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-6xl mb-4">404</h1>
+        <p class="text-lg text-zinc-500 dark:text-zinc-400 mb-8 max-w-md mx-auto">
+            Sorry, we couldn't find the page you're looking for. It might have been moved, deleted, or never existed.
+        </p>
+        <div class="flex gap-4 justify-center">
+            <a href="/"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-medium transition-colors shadow-sm hover:shadow-md hover:shadow-brand-500/20">
+                <span class="material-symbols-outlined text-[20px]">home</span>
+                Go Home
+            </a>
+            <button onclick="history.back()"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700/50 text-zinc-700 dark:text-zinc-300 font-medium transition-colors">
+                <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                Go Back
+            </button>
+        </div>
+    </div>
+</div>
+{{ end }}

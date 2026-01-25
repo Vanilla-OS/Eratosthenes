@@ -4,3 +4,5 @@ __pycache__
 env
 poetry.lock
 node_modules/
+eratosthenes_data/
+eratosthenes
