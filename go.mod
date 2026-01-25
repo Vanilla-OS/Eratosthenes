@@ -4,7 +4,7 @@ go 1.24.12
 
 require (
 	github.com/mirkobrombin/go-module-router/v2 v2.0.3
-	github.com/mirkobrombin/go-slipstream v0.0.0-20260116153833-040538be0fcc
+	github.com/mirkobrombin/go-slipstream v1.0.0
 	github.com/mirkobrombin/go-warp v1.0.0
 	github.com/ulikunitz/xz v0.5.15
 	github.com/vanilla-os/sdk v0.0.0-20260125180913-308d9916c100

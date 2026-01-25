@@ -84,8 +84,8 @@ github.com/mirkobrombin/go-module-router/v2 v2.0.3 h1:1G+jy8iUMPxRAhxpF6DdnMzngy
 github.com/mirkobrombin/go-module-router/v2 v2.0.3/go.mod h1:wO9+abX1ASHwyWAiaPlhXF+9xpsWdEhpZHIcAq8wrH4=
 github.com/mirkobrombin/go-signal/v2 v2.0.0 h1:8XHnop9mdysg+Mlk1KYKkbIhDk3I6TQHh7dJh8aJo9E=
 github.com/mirkobrombin/go-signal/v2 v2.0.0/go.mod h1:Csmo2dYGH8or5nVVq4TMydv/LGXuv+Wg0Ryj5XsNWlg=
-github.com/mirkobrombin/go-slipstream v0.0.0-20260116153833-040538be0fcc h1:obpScnl+uxR7GW0h83/nUUqU9U4v2Y9olsb/D1ypRx4=
-github.com/mirkobrombin/go-slipstream v0.0.0-20260116153833-040538be0fcc/go.mod h1:TX0D0dfyS8ZDRbR3sZ4+aoGwoVtDDuh8As1uISKg7Gg=
+github.com/mirkobrombin/go-slipstream v1.0.0 h1:7uE/aBZOw301D1VpIBHHLCQoghtvYrBJ81cJjgKEy30=
+github.com/mirkobrombin/go-slipstream v1.0.0/go.mod h1:TX0D0dfyS8ZDRbR3sZ4+aoGwoVtDDuh8As1uISKg7Gg=
 github.com/mirkobrombin/go-warp v1.0.0 h1:vpkuaDyzFAC2AR8NelhZaNAGHuy8CLDPhbfLpTD6A24=
 github.com/mirkobrombin/go-warp v1.0.0/go.mod h1:V4OO14qmMLrO0dEQSe5mdgc16b2IoaE7h0lNrUPSus4=
 github.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6 h1:ZK8zHtRHOkbHy6Mmr5D264iyp3TiX5OmNcI5cIARiQI=
