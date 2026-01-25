@@ -22,8 +22,8 @@ jobs:
 
     - name: Build
       run: |
-        go build -o eratosthenes-amd64 -ldflags="-X 'main.Version=${{ github.sha }}'" ./cmd
-        GOARCH=arm64 go build -o eratosthenes-arm64 -ldflags="-X 'main.Version=${{ github.sha }}'" ./cmd
+        go build -o eratosthenes-amd64 -ldflags="-X 'main.Version=${{ github.sha }}'" ./cmd/eratosthenes/main.go
+        GOARCH=arm64 go build -o eratosthenes-arm64 -ldflags="-X 'main.Version=${{ github.sha }}'" ./cmd/eratosthenes/main.go
 
     - uses: softprops/action-gh-release@v2
       if: github.repository == 'vanilla-os/eratosthenes' && github.ref == 'refs/heads/main'
