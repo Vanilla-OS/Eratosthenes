@@ -5,9 +5,9 @@ go 1.24.12
 require (
 	github.com/mirkobrombin/go-module-router/v2 v2.0.3
 	github.com/mirkobrombin/go-slipstream v0.0.0-20260116153833-040538be0fcc
-	github.com/mirkobrombin/go-warp v1.0.1-0.20260115145704-11be60ab693f
+	github.com/mirkobrombin/go-warp v1.0.0
 	github.com/ulikunitz/xz v0.5.15
-	github.com/vanilla-os/sdk v0.0.0
+	github.com/vanilla-os/sdk v0.0.0-20260125180913-308d9916c100
 )
 
 require (
@@ -64,11 +64,4 @@ require (
 	golang.org/x/sys v0.36.0 // indirect
 	golang.org/x/text v0.28.0 // indirect
 	google.golang.org/protobuf v1.36.7 // indirect
-)
-
-replace (
-	github.com/mirkobrombin/go-module-router/v2 => ../go-tools/go-module-router
-	github.com/mirkobrombin/go-slipstream => ../go-tools/go-slipstream
-	github.com/mirkobrombin/go-warp => ../go-tools/go-warp
-	github.com/vanilla-os/sdk => ../sdk
 )

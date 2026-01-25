@@ -80,8 +80,14 @@ github.com/mirkobrombin/go-cli-builder/v2 v2.0.5 h1:ASWEhdH5sPUVVQ9OC/1uuDLPvglB
 github.com/mirkobrombin/go-cli-builder/v2 v2.0.5/go.mod h1:jqg09VyejIcNMrGSz4zflb1VO1dOZ6h4hKfmGkXv110=
 github.com/mirkobrombin/go-foundation v0.2.1 h1:3cq0cWfkwfBWjX2p4OsQYDHZwqA3/DJHUKP7FszrYJw=
 github.com/mirkobrombin/go-foundation v0.2.1/go.mod h1:ScQBotKzuC5Lxi61Wyw0h8NaeGKsuwp4xHwPj5Mj9DY=
+github.com/mirkobrombin/go-module-router/v2 v2.0.3 h1:1G+jy8iUMPxRAhxpF6DdnMzngyPuMkTyqpFb71eqtHc=
+github.com/mirkobrombin/go-module-router/v2 v2.0.3/go.mod h1:wO9+abX1ASHwyWAiaPlhXF+9xpsWdEhpZHIcAq8wrH4=
 github.com/mirkobrombin/go-signal/v2 v2.0.0 h1:8XHnop9mdysg+Mlk1KYKkbIhDk3I6TQHh7dJh8aJo9E=
 github.com/mirkobrombin/go-signal/v2 v2.0.0/go.mod h1:Csmo2dYGH8or5nVVq4TMydv/LGXuv+Wg0Ryj5XsNWlg=
+github.com/mirkobrombin/go-slipstream v0.0.0-20260116153833-040538be0fcc h1:obpScnl+uxR7GW0h83/nUUqU9U4v2Y9olsb/D1ypRx4=
+github.com/mirkobrombin/go-slipstream v0.0.0-20260116153833-040538be0fcc/go.mod h1:TX0D0dfyS8ZDRbR3sZ4+aoGwoVtDDuh8As1uISKg7Gg=
+github.com/mirkobrombin/go-warp v1.0.0 h1:vpkuaDyzFAC2AR8NelhZaNAGHuy8CLDPhbfLpTD6A24=
+github.com/mirkobrombin/go-warp v1.0.0/go.mod h1:V4OO14qmMLrO0dEQSe5mdgc16b2IoaE7h0lNrUPSus4=
 github.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6 h1:ZK8zHtRHOkbHy6Mmr5D264iyp3TiX5OmNcI5cIARiQI=
 github.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6/go.mod h1:CJlz5H+gyd6CUWT45Oy4q24RdLyn7Md9Vj2/ldJBSIo=
 github.com/muesli/cancelreader v0.2.2 h1:3I4Kt4BQjOR54NavqnDogx/MIoWBFa0StPA8ELUXHmA=
@@ -117,6 +123,8 @@ github.com/stretchr/testify v1.10.0 h1:Xv5erBjTwe/5IxqUQTdXv5kgmIvbHo3QQyRwhJsOf
 github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/ulikunitz/xz v0.5.15 h1:9DNdB5s+SgV3bQ2ApL10xRc35ck0DuIX/isZvIk+ubY=
 github.com/ulikunitz/xz v0.5.15/go.mod h1:nbz6k7qbPmH4IRqmfOplQw/tblSgqTqBwxkY0oWt/14=
+github.com/vanilla-os/sdk v0.0.0-20260125180913-308d9916c100 h1:UZ2wjTXekcYkXgUF0gMaQkZw6BYiEXTdSLN9y+RAtNw=
+github.com/vanilla-os/sdk v0.0.0-20260125180913-308d9916c100/go.mod h1:7OrRPJwcgw5aGZHLPbh8yfP9Os+T8gv14Z+vqGF506A=
 github.com/vorlif/spreak v0.6.0 h1:+WrtSGKx9zcZy8d/Tp6t+OA3x9RgmA8TQYPzQ+U7Ddc=
 github.com/vorlif/spreak v0.6.0/go.mod h1:vcqv4dB1XgHpxIXhV5C+8EgqlzKfL37Atj2O/bOB1Bw=
 github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e h1:JVG44RsyaB9T2KIHavMF/ppJZNG9ZpyihvCd0w101no=
